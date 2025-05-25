@@ -30,7 +30,7 @@ def stream_users_in_batches(batch_size):
 
 
 
-def  batch_processing(batch_size):
+def batch_processing(batch_size):
     """
     Generator function that yields users in batches from the database.
 
