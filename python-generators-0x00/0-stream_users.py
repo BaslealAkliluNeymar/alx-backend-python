@@ -18,7 +18,13 @@ def stream_users():
     cursor.execute("SELECT * FROM user_data")
 
     for user in cursor:
-        yield user
+        yield {
+            "id": user[0],
+            "name": user[1],
+            "email": user[2],
+            "age": user[3],
+            "created_at": user[4]
+        }
     
 
     cursor.close()
