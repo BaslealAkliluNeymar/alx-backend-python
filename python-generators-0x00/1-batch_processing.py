@@ -16,16 +16,17 @@ def stream_users_in_batches(batch_size):
     db  = seed.Seed('localhost', 'root', '1209', 'ALX_prodev')
     connection = db.connect_to_prodev()
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM user_data LIMIT %s",(batch_size,))
+    cursor.execute("SELECT * FROM user_data")
 
-    rows = cursor.fetchmany(batch_size)
-    if not rows:
-        return []
-    for row in rows:
-        yield row
+    while True:
+        rows = cursor.fetchmany(batch_size)
+        if not rows:
+            return []
+        for row in rows:
+            yield row
 
-    cursor.close()
-    connection.close()
+        cursor.close()
+        connection.close()
 
 
 
@@ -47,12 +48,12 @@ def  batch_processing(batch_size):
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM user_data WHERE age > 25 ")
 
-    rows = cursor.fetchmany(batch_size)
-
-    if not rows:
-        return []
-    for row in rows:
-        yield row
+    while True:
+        rows = cursor.fetchmany(batch_size)
+        if not rows:
+            return []
+        for row in rows:
+            yield row
 
     
 try:
