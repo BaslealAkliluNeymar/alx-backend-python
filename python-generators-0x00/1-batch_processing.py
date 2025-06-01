@@ -56,18 +56,4 @@ def batch_processing(batch_size):
             yield row
 
     
-try:
-    for i in batch_processing(5):
-        print(i)
-except BrokenPipeError:
-    sys.stderr.close()
 
-
-
-
-
-
-
-
-# print(stream_users_in_batches(5))
-# print(batch_processing(50))
