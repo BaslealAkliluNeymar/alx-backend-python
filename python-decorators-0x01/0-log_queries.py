@@ -1,7 +1,7 @@
 import sqlite3
+from datetime import datetime
 
-
-#### decorator to lof SQL queries
+#### decorator to log SQL queries
 
 """ YOUR CODE GOES HERE"""
 def log_queries(func):
